@@ -14,7 +14,6 @@ A full-featured task management application built with **Laravel 12**, **Tailwin
 - [Installation & Setup](#installation--setup)
 - [Running the Application](#running-the-application)
 - [Database Seeding](#database-seeding)
-- [Testing](#testing)
 - [License](#license)
 
 ---
@@ -318,22 +317,6 @@ php artisan migrate:fresh --seed
 | `due_date`    | DATE         | Optional due date                                          |
 | `created_at`  | TIMESTAMP    | Auto-managed                                               |
 | `updated_at`  | TIMESTAMP    | Auto-managed                                               |
-
----
-
-## Testing
-
-Run the test suite with:
-
-```bash
-php artisan test
-```
-
-Or using PHPUnit directly:
-
-```bash
-./vendor/bin/phpunit
-```
 
 ---
 
