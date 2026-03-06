@@ -1,59 +1,342 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📝 Todo App
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A full-featured task management application built with **Laravel 12**, **Tailwind CSS**, and **Alpine.js**. Users can register, log in, and manage their personal tasks with priorities, statuses, due dates, search, and filtering capabilities.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Table of Contents
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Prerequisites](#prerequisites)
+- [Installation & Setup](#installation--setup)
+- [Running the Application](#running-the-application)
+- [Database Seeding](#database-seeding)
+- [Testing](#testing)
+- [License](#license)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## Features
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+- **User Authentication** — Register, login, logout, password reset (powered by Laravel Breeze)
+- **Task CRUD** — Create, read, update, and delete tasks
+- **Task Priorities** — Low (green), Medium (yellow), High (red)
+- **Task Statuses** — Pending (gray), In Progress (blue), Completed (green)
+- **Due Dates** — Optional due date with date picker
+- **Search** — Search tasks by title or description
+- **Filters** — Filter tasks by priority, status, and due date
+- **Dashboard** — Task statistics widget showing total, pending, in-progress, and completed counts
+- **Authorization** — Users can only manage their own tasks (enforced via policies)
+- **Profile Management** — Update name, email, password, or delete account
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## Screenshots
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Authentication Pages
 
-### Premium Partners
+<p><strong>Login</strong></p>
+<img src="screenshots/login.png" alt="Login Page" width="100%" style="max-width: 800px;" />
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+<p><strong>Register</strong></p>
+<img src="screenshots/register.png" alt="Register Page" width="100%" style="max-width: 800px;" />
 
-## Contributing
+<p><strong>Forgot Password</strong></p>
+<img src="screenshots/forgot-password.png" alt="Forgot Password Page" width="100%" style="max-width: 800px;" />
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+<p><strong>Reset Password</strong></p>
+<img src="screenshots/reset-password.png" alt="Reset Password Page" width="100%" style="max-width: 800px;" />
 
-## Code of Conduct
+### Main Application Pages
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+<p><strong>Dashboard</strong></p>
+<img src="screenshots/dashboard.png" alt="Dashboard" width="100%" style="max-width: 800px;" />
 
-## Security Vulnerabilities
+<p><strong>Task List</strong></p>
+<img src="screenshots/task-index.png" alt="Task List" width="100%" style="max-width: 800px;" />
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+<p><strong>Create Task</strong></p>
+<img src="screenshots/task-create.png" alt="Create Task" width="100%" style="max-width: 800px;" />
+
+<p><strong>Edit Task</strong></p>
+<img src="screenshots/task-edit.png" alt="Edit Task" width="100%" style="max-width: 800px;" />
+
+### Profile Pages
+
+<p><strong>Edit Profile</strong></p>
+<img src="screenshots/profile-edit.png" alt="Edit Profile" width="100%" style="max-width: 800px;" />
+
+---
+
+## Tech Stack
+
+| Layer          | Technology            |
+| -------------- | --------------------- |
+| Framework      | Laravel 12            |
+| Language       | PHP 8.2+              |
+| Frontend       | Blade, Tailwind CSS 3 |
+| Build Tool     | Vite 7                |
+| Authentication | Laravel Breeze        |
+| Database       | MySQL                 |
+| Code Style     | Laravel Pint          |
+
+---
+
+## Project Structure
+
+```
+todo-app/
+├── app/
+│   ├── Contracts/
+│   │   └── RepositoryInterface.php      # CRUD contract for repositories
+│   ├── Enums/
+│   │   ├── PriorityEnum.php             # Low, Medium, High
+│   │   └── StatusEnum.php               # Pending, In Progress, Completed
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── TaskController.php       # Task CRUD (index, create, store, edit, update, destroy)
+│   │   │   ├── ProfileController.php    # Profile management
+│   │   │   └── Auth/                    # Authentication controllers (Breeze)
+│   │   └── Requests/
+│   │       ├── Tasks/
+│   │       │   ├── StoreTaskRequest.php     # Validation for creating tasks
+│   │       │   └── UpdateTaskRequest.php    # Validation for updating tasks
+│   │       └── ProfileUpdateRequest.php
+│   ├── Models/
+│   │   ├── Task.php                     # Task model (fillable, casts, relationships)
+│   │   └── User.php                     # User model
+│   ├── Policies/
+│   │   └── TaskPolicy.php              # Authorization: users manage only own tasks
+│   ├── Providers/
+│   │   └── AppServiceProvider.php      # Binds TaskRepository to service container
+│   ├── Repositories/
+│   │   ├── BaseRepository.php          # Generic CRUD repository
+│   │   ├── TaskRepository.php          # Task-specific queries (search, filters)
+│   │   └── UserRepository.php          # User repository
+│   ├── Services/
+│   │   └── TaskService.php             # Business logic (stats, CRUD operations)
+│   └── View/
+│       └── Components/
+│           ├── AppLayout.php           # Main layout component
+│           ├── GuestLayout.php         # Guest layout component
+│           └── TaskWidget.php          # Dashboard task statistics widget
+├── database/
+│   ├── factories/
+│   │   └── UserFactory.php
+│   ├── migrations/
+│   │   ├── 0001_01_01_000000_create_users_table.php
+│   │   ├── 0001_01_01_000001_create_cache_table.php
+│   │   ├── 0001_01_01_000002_create_jobs_table.php
+│   │   └── 2026_03_04_211233_create_tasks_table.php
+│   │   └── 2026_03_06_224344_create_password_reset_tokens_table.php
+│   └── seeders/
+│       ├── DatabaseSeeder.php          # Calls UserSeeder & TaskSeeder
+│       ├── UserSeeder.php              # 3 test users
+│       └── TaskSeeder.php              # Sample tasks per user
+├── resources/
+│   ├── css/
+│   │   └── app.css                     # Tailwind CSS entry
+│   ├── js/
+│   │   ├── app.js                      # Alpine.js entry
+│   │   └── bootstrap.js
+│   └── views/
+│       ├── dashboard.blade.php         # Dashboard with task widget
+│       ├── layouts/
+│       │   ├── app.blade.php           # Authenticated layout
+│       │   ├── guest.blade.php         # Guest layout
+│       │   └── navigation.blade.php    # Navigation bar
+│       ├── tasks/
+│       │   ├── index.blade.php         # Task list with search & filters
+│       │   ├── create.blade.php        # Create task form
+│       │   └── edit.blade.php          # Edit task form
+│       ├── profile/
+│       │   ├── edit.blade.php          # Profile page
+│       │   └── partials/              # Profile sub-forms
+│       ├── auth/                       # Login, register, password reset, etc.
+│       └── components/                 # Reusable Blade components
+├── routes/
+│   ├── web.php                         # Application routes
+│   ├── auth.php                        # Authentication routes
+│   └── console.php                     # Console commands
+├── tests/
+│   ├── Feature/                        # Feature tests
+│   └── Unit/                           # Unit tests
+├── composer.json
+├── package.json
+├── vite.config.js
+├── tailwind.config.js
+└── phpunit.xml
+```
+
+### Architecture Overview
+
+The application follows the **Repository-Service Pattern**:
+
+1. **Controllers** receive HTTP requests and delegate to Services
+2. **Services** contain business logic and call Repositories
+3. **Repositories** handle database queries (extend `BaseRepository` which implements `RepositoryInterface`)
+4. **Policies** enforce authorization rules
+5. **Form Requests** handle input validation
+
+---
+
+## Prerequisites
+
+- **PHP** >= 8.2
+- **Composer** >= 2.x
+- **Node.js** >= 18.x and **npm**
+- **MySQL** >= 8.0 (or MariaDB)
+
+---
+
+## Installation & Setup
+
+### 1. Clone the repository
+
+```bash
+git clone <repository-url> todo-app
+cd todo-app
+```
+
+### 2. Install PHP dependencies
+
+```bash
+composer install
+```
+
+### 3. Install Node.js dependencies
+
+```bash
+npm install
+```
+
+### 4. Environment configuration
+
+```bash
+cp .env.example .env
+```
+
+Edit the `.env` file and configure your database connection:
+
+```dotenv
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=todo_app
+DB_USERNAME=root
+DB_PASSWORD=your_password
+```
+
+### 5. Generate application key
+
+```bash
+php artisan key:generate
+```
+
+### 6. Create the database
+
+Create a MySQL database named `todo_app` (or whatever you set in `.env`):
+
+```sql
+CREATE DATABASE todo_app;
+```
+
+### 7. Run migrations
+
+```bash
+php artisan migrate
+```
+
+### 8. (Optional) Seed the database
+
+```bash
+php artisan db:seed
+```
+
+This creates 3 test users with sample tasks:
+
+| Name        | Email                  | Password      |
+| ----------- | ---------------------- | ------------- |
+| John Doe    | johndoe@example.com    | johndoe123    |
+| Jane Doe    | janedoe@example.com    | janedoe123    |
+| Alice Smith | alicesmith@example.com | alicesmith123 |
+
+### 9. Build frontend assets
+
+```bash
+npm run build
+```
+
+---
+
+## Running the Application
+
+### Development mode (with hot reload)
+
+Start the Laravel development server and Vite dev server in separate terminals:
+
+```bash
+# Terminal 1 — Laravel server
+php artisan serve
+
+# Terminal 2 — Vite dev server (hot reload for CSS/JS)
+npm run dev
+```
+
+The application will be available at **http://localhost:8000**.
+
+### Production
+
+```bash
+npm run build
+php artisan serve
+```
+
+---
+
+## Database Seeding
+
+Reset and re-seed the database at any time:
+
+```bash
+php artisan migrate:fresh --seed
+```
+
+### Task Schema
+
+| Column        | Type         | Description                                                |
+| ------------- | ------------ | ---------------------------------------------------------- |
+| `id`          | BIGINT       | Primary key                                                |
+| `user_id`     | BIGINT       | Foreign key to `users` table                               |
+| `title`       | VARCHAR(255) | Task title (required)                                      |
+| `description` | TEXT         | Task description (optional)                                |
+| `priority`    | ENUM         | `low`, `medium`, `high` (default: `medium`)                |
+| `status`      | ENUM         | `pending`, `in_progress`, `completed` (default: `pending`) |
+| `due_date`    | DATE         | Optional due date                                          |
+| `created_at`  | TIMESTAMP    | Auto-managed                                               |
+| `updated_at`  | TIMESTAMP    | Auto-managed                                               |
+
+---
+
+## Testing
+
+Run the test suite with:
+
+```bash
+php artisan test
+```
+
+Or using PHPUnit directly:
+
+```bash
+./vendor/bin/phpunit
+```
+
+---
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
